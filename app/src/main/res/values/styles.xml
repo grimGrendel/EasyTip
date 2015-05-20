@@ -5,4 +5,8 @@
         <!-- Customize your theme here. -->
     </style>
 
+    <style name="DefaultText">
+        <item name="android:textSize">20dp</item>
+    </style>
+
 </resources>

@@ -1,7 +1,11 @@
 <resources>
     <string name="app_name">EasyTip</string>
 
-    <string name="hello_world">Hello world!</string>
     <string name="action_settings">Settings</string>
-    <string name="easy_tip_title">Easy Tip</string>
+    <string name="welcome_easy_tip_title">Easy Tip</string>
+    <string name="welcome_bill_amount_field">Bill amount</string>
+    <string name="welcome_dollar_sign">$</string>
+    <string name="welcome_percentage_sign">%</string>
+    <string name="welcome_capital_or">OR</string>
+    <string name="welcome_ervice_quality_field">Service Quality</string>
 </resources>
