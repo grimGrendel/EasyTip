@@ -16,6 +16,14 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity
+            android:name=".SummaryActivity"
+            android:label="@string/title_activity_summary"
+            android:parentActivityName=".Welcome" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="easytip.easytip.Welcome" />
+        </activity>
     </application>
 
 </manifest>
