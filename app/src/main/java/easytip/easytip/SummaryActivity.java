@@ -1,28 +1,18 @@
 package easytip.easytip;
 
-import android.app.Activity;
+
 import android.graphics.Typeface;
-import android.content.Intent;
 import android.os.Bundle;
-import android.text.Editable;
+import android.support.v7.app.ActionBarActivity;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.EditText;
-import android.widget.ExpandableListView;
 import android.widget.TextView;
 import android.widget.RatingBar;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
 
 
-public class SummaryActivity extends Activity {
-
-    ExpandableListAdapter listAdapter;
-    ExpandableListView expListView;
-    List<String> listDataHeader;
-    HashMap<String, List<String>> listDataChild;
+public class SummaryActivity extends ActionBarActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -32,17 +22,6 @@ public class SummaryActivity extends Activity {
         TextView txt = (TextView) findViewById(R.id.summary_title);
         Typeface font = Typeface.createFromAsset(getAssets(), "Lobster-Regular.ttf");
         txt.setTypeface(font);
-
-        // get the listview
-        expListView = (ExpandableListView) findViewById(R.id.summary_expandable_list_view);
-
-        // preparing list data
-        prepareListData();
-
-        listAdapter = new ExpandableListAdapter(this, listDataHeader, listDataChild);
-
-        // setting list adapter
-        expListView.setAdapter(listAdapter);
 
         // Calculate and display the bill
        // calculateBillAmount();
@@ -91,26 +70,6 @@ public class SummaryActivity extends Activity {
 
         TextView totalBillTV = (TextView) findViewById(R.id.textView3);
         totalBillTV.setText(String.valueOf(totalBill));
-    }
-
-    /*
-     *   Preparing the list data
-     */
-    private void prepareListData(){
-        listDataHeader = new ArrayList<>();
-        listDataChild = new HashMap<>();
-
-        // adding header
-        listDataHeader.add("Bill Summary By Person");
-
-        // adding child data
-        List<String> personBills = new ArrayList<>();
-        personBills.add("Person's 1 Bill");
-        personBills.add("Person's 2 Bill");
-        personBills.add("Person's 3 Bill");
-        personBills.add("Person's 4 Bill");
-
-        listDataChild.put(listDataHeader.get(0), personBills);
     }
 
     @Override

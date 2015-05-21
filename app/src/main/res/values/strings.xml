@@ -14,7 +14,12 @@
     <string name="summary_title">Bill Summary</string>
     <string name="summary_total_amount">Total Amount</string>
     <string name="summary_total_tip">Total Tip</string>
-    <string name="summary_total_bill_amount">Total Bill Amount</string>
+    <string name="summary_grand_total">Grand Total</string>
+    <string name="summary_tip_per_person">Tip Per Person</string>
+    <string name="summary_grand_total_per_person">Grand Total Per Person</string>
     <string name="welcome_submit_button">Submit</string>
     <string name="welcome_persons_sharing_bill"># of persons sharing the bill</string>
+    <string name="summary_split_the_bill_group_title">Split the Bill</string>
+    <string name="summary_one_bill_group_title">One Bill</string>
+    <string name="summary_amount_per_person">Amount Per Person</string>
 </resources>
