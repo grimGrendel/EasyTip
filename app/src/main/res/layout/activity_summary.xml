@@ -64,7 +64,7 @@
                     android:layout_height="wrap_content"
                     android:textAppearance="?android:attr/textAppearanceMedium"
                     android:text="Medium Text"
-                    android:id="@+id/textView3" />
+                    android:id="@+id/textView1" />
             </LinearLayout>
 
         </LinearLayout>
@@ -109,7 +109,7 @@
                     android:layout_height="wrap_content"
                     android:textAppearance="?android:attr/textAppearanceMedium"
                     android:text="Medium Text"
-                    android:id="@+id/textView3" />
+                    android:id="@+id/textView2" />
             </LinearLayout>
 
         </LinearLayout>

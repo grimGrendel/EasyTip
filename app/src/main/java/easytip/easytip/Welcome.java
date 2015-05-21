@@ -15,9 +15,9 @@ import android.widget.TextView;
 
 public class Welcome extends Activity {
 
-    private EditText billAmountET;
-    private EditText tipPercentET;
-    private RatingBar ratingRB;
+    protected EditText billAmountET;
+    protected EditText tipPercentET;
+    protected RatingBar ratingRB;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
