@@ -1,10 +1,12 @@
 package easytip.easytip;
 
 import android.app.Activity;
+import android.graphics.Typeface;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.ExpandableListView;
+import android.widget.TextView;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -22,6 +24,10 @@ public class SummaryActivity extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_summary);
+
+        TextView txt = (TextView) findViewById(R.id.summary_title);
+        Typeface font = Typeface.createFromAsset(getAssets(), "Lobster-Regular.ttf");
+        txt.setTypeface(font);
 
         // get the listview
         expListView = (ExpandableListView) findViewById(R.id.summary_expandable_list_view);

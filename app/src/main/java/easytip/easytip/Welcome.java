@@ -1,17 +1,24 @@
 package easytip.easytip;
 
+import android.app.Activity;
+import android.graphics.Typeface;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.TextView;
 
 
-public class Welcome extends ActionBarActivity {
+public class Welcome extends Activity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_welcome);
+
+        TextView txt = (TextView) findViewById(R.id.welcome_title);
+        Typeface font = Typeface.createFromAsset(getAssets(), "Lobster-Regular.ttf");
+        txt.setTypeface(font);
     }
 
     @Override
