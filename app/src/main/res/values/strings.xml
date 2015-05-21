@@ -4,4 +4,10 @@
     <string name="hello_world">Hello world!</string>
     <string name="action_settings">Settings</string>
     <string name="easy_tip_title">Easy Tip</string>
+
+    <string name="title_activity_summary">Summary</string>
+    <string name="summary_title">Bill Summary</string>
+    <string name="summary_total_amount">Total Amount</string>
+    <string name="summary_total_tip">Total Tip</string>
+    <string name="summary_total_bill_amount">Total Bill Amount</string>
 </resources>
