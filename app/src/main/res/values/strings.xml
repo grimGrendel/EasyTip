@@ -15,4 +15,5 @@
     <string name="summary_total_amount">Total Amount</string>
     <string name="summary_total_tip">Total Tip</string>
     <string name="summary_total_bill_amount">Total Bill Amount</string>
+    <string name="welcome_submit_button">Submit</string>
 </resources>
