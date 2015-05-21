@@ -14,7 +14,7 @@ import android.widget.RatingBar;
 import android.widget.TextView;
 
 
-public class Welcome extends ActionBarActivity {
+public class Welcome extends Activity {
 
     protected EditText billAmountET;
     protected EditText tipPercentET;
