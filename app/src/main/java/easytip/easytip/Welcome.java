@@ -102,7 +102,7 @@ public class Welcome extends ActionBarActivity {
         summaryIntent.putExtra("callingSummaryActivity", "Welcome");
         summaryIntent.putExtra(BILL_AMOUNT, billAmount.getText().toString());
         summaryIntent.putExtra(TIP_PERCENTAGE, tipPercent.getText().toString());
-        summaryIntent.putExtra(SERVICE_RATING, String.valueOf(serviceRating.getNumStars()));
+        summaryIntent.putExtra(SERVICE_RATING, String.valueOf(serviceRating.getRating()));
         summaryIntent.putExtra(NUM_PERSONS, numPersons.getText().toString());
 
         startActivity(summaryIntent);
