@@ -47,7 +47,11 @@ public class SummaryActivity extends ActionBarActivity {
         *  (The variables are : billAmountET, tipPercentET, and ratingRB) I'm working on it.
         */
 
-        final double initialBill = Double.parseDouble(String.valueOf(initialBillTxt));
+        final double initialBill;
+        if (initialBillTxt.length() > 0)
+            initialBill = Double.parseDouble(String.valueOf(initialBillTxt));
+        else
+            initialBill = 0;
         double tipPercent = 0.00;
         double rating = 0.00;
 
@@ -60,7 +64,10 @@ public class SummaryActivity extends ActionBarActivity {
             rating = Double.parseDouble(String.valueOf(ratingTxt));
             totalTip = initialBill*(10 + 2*rating)/100;
         }
-        final int numPersons = Integer.parseInt(String.valueOf(numPersonsTxt));
+        final int numPersons;
+        if (numPersonsTxt.length() > 0)
+           numPersons = Integer.parseInt(String.valueOf(numPersonsTxt));
+        else numPersons = 1;
 
         // Calculate total bill
         double totalBill = initialBill + totalTip;
@@ -98,7 +105,7 @@ public class SummaryActivity extends ActionBarActivity {
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.menu_summary, menu);
+        getMenuInflater().inflate(R.menu.menu_welcome, menu);
         return true;
     }
 
@@ -111,6 +118,12 @@ public class SummaryActivity extends ActionBarActivity {
 
         //noinspection SimplifiableIfStatement
         if (id == R.id.action_settings) {
+            Intent preferenceIntent = new Intent (this, PreferenceActivity.class);
+            preferenceIntent.putExtra("callingSummaryActivity", "Welcome");
+            startActivity(preferenceIntent);
+            return true;
+        } else if (id == R.id.action_exit) {
+            System.exit(0);
             return true;
         }
 

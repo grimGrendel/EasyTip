@@ -88,6 +88,12 @@ public class Welcome extends ActionBarActivity {
 
         //noinspection SimplifiableIfStatement
         if (id == R.id.action_settings) {
+            Intent preferenceIntent = new Intent (this, PreferenceActivity.class);
+            preferenceIntent.putExtra("callingSummaryActivity", "Welcome");
+            startActivity(preferenceIntent);
+            return true;
+        } else if (id == R.id.action_exit) {
+            System.exit(0);
             return true;
         }
 
