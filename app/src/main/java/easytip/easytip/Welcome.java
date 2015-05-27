@@ -1,6 +1,5 @@
 package easytip.easytip;
 
-import android.app.ActionBar;
 import android.graphics.Typeface;
 import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
@@ -17,9 +16,15 @@ import android.widget.TextView;
 
 public class Welcome extends ActionBarActivity {
 
-    protected EditText billAmountET;
-    protected EditText tipPercentET;
-    protected RatingBar ratingRB;
+    public final static String BILL_AMOUNT = "easyTip.BILL_AMOUNT";
+    public final static String TIP_PERCENTAGE = "easyTip.TIP_PERCENTAGE";
+    public final static String SERVICE_RATING = "easyTip.SERVICE_RATING";
+    public final static String NUM_PERSONS = "easyTip.NUM_PERSONS";
+
+    private EditText billAmount;
+    private EditText tipPercent;
+    private EditText numPersons;
+    private RatingBar serviceRating;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -31,33 +36,38 @@ public class Welcome extends ActionBarActivity {
         Typeface font = Typeface.createFromAsset(getAssets(), "Lobster-Regular.ttf");
         txt.setTypeface(font);
 
-        // get the bill amount
-        billAmountET = (EditText) findViewById(R.id.welcome_bill_amount_input_field);
+        // get the bill amount input
+        billAmount = (EditText) findViewById(R.id.welcome_bill_amount_input_field);
 
-        // get the tip percentage
+        // get the input for number of persons
+        numPersons = (EditText) findViewById(R.id.welcome_number_persons);
+
+        // get the tip percentage input
         // When the tip percentage is set, it reset the star rating to 0
-        tipPercentET = (EditText) findViewById(R.id.welcome_tip_amount_input_field);
-        tipPercentET.addTextChangedListener(new TextWatcher() {
+        tipPercent = (EditText) findViewById(R.id.welcome_tip_amount_input_field);
+        tipPercent.addTextChangedListener(new TextWatcher() {
             @Override
-            public void beforeTextChanged(CharSequence s, int start, int count, int after) {}
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+            }
 
             @Override
             public void onTextChanged(CharSequence s, int start, int before, int count) {
                 if (!String.valueOf(s).equals(""))
-                    ratingRB.setRating(0f);
+                    serviceRating.setRating(0f);
             }
 
             @Override
-            public void afterTextChanged(Editable s) {}
+            public void afterTextChanged(Editable s) {
+            }
         });
 
         // get the star rating
         // When the star rating is set, it reset the tip percentage to 0
-        ratingRB = (RatingBar) findViewById(R.id.welcome_rating_bar);
-        ratingRB.setOnRatingBarChangeListener(new RatingBar.OnRatingBarChangeListener() {
+        serviceRating = (RatingBar) findViewById(R.id.welcome_rating_bar);
+        serviceRating.setOnRatingBarChangeListener(new RatingBar.OnRatingBarChangeListener() {
             @Override
             public void onRatingChanged(RatingBar ratingBar, float rating, boolean fromUser) {
-                tipPercentET.setText("", TextView.BufferType.EDITABLE);
+                tipPercent.setText("", TextView.BufferType.EDITABLE);
             }
         });
     }
@@ -87,13 +97,15 @@ public class Welcome extends ActionBarActivity {
     public void welcomeSubmitButtonClicked(View view) {
 
         // Changes layout from Welcome to Summary
-        Intent getSummaryScreenIntent = new Intent (this, SummaryActivity.class);
+        Intent summaryIntent = new Intent (this, SummaryActivity.class);
 
-        final int result = 1;
+        summaryIntent.putExtra("callingSummaryActivity", "Welcome");
+        summaryIntent.putExtra(BILL_AMOUNT, billAmount.getText().toString());
+        summaryIntent.putExtra(TIP_PERCENTAGE, tipPercent.getText().toString());
+        summaryIntent.putExtra(SERVICE_RATING, String.valueOf(serviceRating.getNumStars()));
+        summaryIntent.putExtra(NUM_PERSONS, numPersons.getText().toString());
 
-        getSummaryScreenIntent.putExtra("callingSummaryActivity", "Welcome");
-
-        startActivity(getSummaryScreenIntent);
+        startActivity(summaryIntent);
 
     }
 }
