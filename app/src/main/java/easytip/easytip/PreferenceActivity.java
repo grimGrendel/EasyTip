@@ -7,6 +7,7 @@ import android.text.Editable;
 import android.text.TextWatcher;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.EditText;
 import android.content.SharedPreferences;
 
@@ -15,40 +16,45 @@ import android.content.SharedPreferences;
  */
 public class PreferenceActivity extends ActionBarActivity {
 
+    SharedPreferences prefs;
+    final public static String SETTINGS_KEY = "settings";
+    final public static String PERCENT_TIP_KEY = "preferences_default_percent_tip";
+    EditText defaultTipPercent;
+
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_preferences);
 
-        EditText defaultTipPercent = (EditText) findViewById(R.id.preferences_default_percent_tip);
+        defaultTipPercent = (EditText) findViewById(R.id.preferences_default_percent_tip);
 
-        SharedPreferences prefs = getPreferences(MODE_PRIVATE);
-        String restoredText = prefs.getString("settings", null);
+        prefs = getSharedPreferences(SETTINGS_KEY, MODE_PRIVATE);
+        String savedTipPercent = prefs.getString(PERCENT_TIP_KEY, null);
 
-        if (restoredText != null)
+        if (savedTipPercent != null)
         {
-            String savedTipPercent = prefs.getString("preferences_default_percent_tip", "");
             defaultTipPercent.setText(savedTipPercent);
 
         } else {
             SharedPreferences.Editor editor = prefs.edit();
-            editor.putString("preferences_default_percent_tip",
+            editor.putString(PERCENT_TIP_KEY,
                     String.valueOf(defaultTipPercent.getText()));
-            editor.apply();
+            editor.commit();
         }
     }
 
-    protected void onStop() {
-        super.onStop();
+    protected void onPause() {
+        super.onPause();
 
-        /*
-        TODO This method will be used to put the settings into the SharedPreferences object for persistence
-         */
+        SharedPreferences.Editor editor = prefs.edit();
+        editor.putString(PERCENT_TIP_KEY,
+                String.valueOf(defaultTipPercent.getText()));
+        editor.commit();
     }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.menu_summary, menu);
+        getMenuInflater().inflate(R.menu.menu_welcome, menu);
         return true;
     }
 
@@ -71,5 +77,9 @@ public class PreferenceActivity extends ActionBarActivity {
         }
 
         return super.onOptionsItemSelected(item);
+    }
+
+    public void preferencesDoneClick(View view) {
+        finish();
     }
 }

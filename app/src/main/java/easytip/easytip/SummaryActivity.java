@@ -2,6 +2,7 @@ package easytip.easytip;
 
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.graphics.Typeface;
 import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
@@ -43,10 +44,6 @@ public class SummaryActivity extends ActionBarActivity {
     private void calculateBillAmount(String initialBillTxt, String tipPercentTxt,
                                         String ratingTxt, String numPersonsTxt) {
 
-        /* TODO refer each value to the now protected variables in Welcome to avoid NullPointerErrors.
-        *  (The variables are : billAmountET, tipPercentET, and ratingRB) I'm working on it.
-        */
-
         final double initialBill;
         if (initialBillTxt.length() > 0)
             initialBill = Double.parseDouble(String.valueOf(initialBillTxt));
@@ -60,9 +57,15 @@ public class SummaryActivity extends ActionBarActivity {
         if (tipPercentTxt.length() > 0) {
             tipPercent = Double.parseDouble(String.valueOf(tipPercentTxt));
             totalTip = initialBill*(tipPercent)/100;
-        }else{
+        } else if (Double.parseDouble(String.valueOf(ratingTxt)) > 0.1){
             rating = Double.parseDouble(String.valueOf(ratingTxt));
             totalTip = initialBill*(10 + 2*rating)/100;
+        } else {
+            SharedPreferences prefs = getSharedPreferences(PreferenceActivity.SETTINGS_KEY, MODE_PRIVATE);
+            String savedTipPercent = prefs.getString(PreferenceActivity.PERCENT_TIP_KEY, null);
+
+            tipPercent = Double.parseDouble(String.valueOf(savedTipPercent));
+            totalTip = initialBill*(tipPercent)/100;
         }
         final int numPersons;
         if (numPersonsTxt.length() > 0)

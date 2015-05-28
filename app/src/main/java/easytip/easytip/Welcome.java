@@ -12,6 +12,7 @@ import android.content.Intent;
 import android.widget.EditText;
 import android.widget.RatingBar;
 import android.widget.TextView;
+import android.content.SharedPreferences;
 
 
 public class Welcome extends ActionBarActivity {
@@ -71,6 +72,17 @@ public class Welcome extends ActionBarActivity {
             }
         });
     }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+
+        SharedPreferences prefs = getSharedPreferences(PreferenceActivity.SETTINGS_KEY, MODE_PRIVATE);
+        String savedTipPercent = prefs.getString(PreferenceActivity.PERCENT_TIP_KEY, null);
+
+        tipPercent.setHint(savedTipPercent);
+    }
+
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {

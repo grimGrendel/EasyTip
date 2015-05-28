@@ -25,4 +25,6 @@
     <string name="summary_amount_per_person">Amount Per Person</string>
     <string name="preferences_setting_title">Settings</string>
     <string name="preferences_default_percent_tip">Default percent tip</string>
+    <string name="title_activity_preferences">PreferenceActivity</string>
+    <string name="preferences_done_button">Done</string>
 </resources>
