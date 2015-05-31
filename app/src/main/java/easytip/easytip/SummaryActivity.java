@@ -8,23 +8,32 @@ import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.widget.EditText;
 import android.widget.TextView;
-import android.widget.RatingBar;
+import android.support.v7.widget.Toolbar;
 
 
 
 public class SummaryActivity extends ActionBarActivity {
+
+    private TextView[] currencySymbol = new TextView[6];
+    private String tipType;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_summary);
 
-        // Set a stylish font for the view title
-        TextView txt = (TextView) findViewById(R.id.summary_title);
+        // Set a toolbar to replace the action bar.
+        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+
+        // Set a stylish font for the view & app title
+        TextView summaryTitle = (TextView) findViewById(R.id.summary_title);
+        TextView appTitle = (TextView) findViewById(R.id.toolbar_title);
         Typeface font = Typeface.createFromAsset(getAssets(), "Lobster-Regular.ttf");
-        txt.setTypeface(font);
+        appTitle.setTypeface(font);
+        summaryTitle.setTypeface(font);
 
         // Get data from intent and calculate values to display
         Intent intent = getIntent();
@@ -33,8 +42,42 @@ public class SummaryActivity extends ActionBarActivity {
         String tipPercent = intent.getStringExtra(Welcome.TIP_PERCENTAGE);
         String serviceRating = intent.getStringExtra(Welcome.SERVICE_RATING);
         String numPersons = intent.getStringExtra(Welcome.NUM_PERSONS);
+        tipType = intent.getStringExtra(Welcome.TIP_TYPE_CHOSEN);
 
         calculateBillAmount(billAmount, tipPercent, serviceRating, numPersons);
+
+        // get the currencySymbol text views
+        currencySymbol[0] = (TextView) findViewById(R.id.currency_symbol_1);
+        currencySymbol[1] = (TextView) findViewById(R.id.currency_symbol_2);
+        currencySymbol[2] = (TextView) findViewById(R.id.currency_symbol_3);
+        currencySymbol[3] = (TextView) findViewById(R.id.currency_symbol_4);
+        currencySymbol[4] = (TextView) findViewById(R.id.currency_symbol_5);
+        currencySymbol[5] = (TextView) findViewById(R.id.currency_symbol_6);
+
+        SharedPreferences prefs = getSharedPreferences(PreferenceActivity.SETTINGS_KEY, MODE_PRIVATE);
+        String savedCurrency = prefs.getString(PreferenceActivity.CURRENCY_SYMBOL_KEY, null);
+
+        if(savedCurrency != null) {
+            switch (savedCurrency) {
+                case "EURO":
+                    setCurrencySymbols("€");
+                    break;
+                case "POUND":
+                    setCurrencySymbols("£");
+                    break;
+                default:
+                    setCurrencySymbols("$");
+                    break;
+            }
+        } else {
+            setCurrencySymbols("$");
+        }
+    }
+
+    private void setCurrencySymbols(String currencySymbol){
+        for(TextView currencySymbolTextView : this.currencySymbol){
+            currencySymbolTextView.setText(currencySymbol);
+        }
     }
 
     /*
@@ -54,7 +97,7 @@ public class SummaryActivity extends ActionBarActivity {
 
         double totalTip = 0.00;
         // if tip by value has been inputted
-        if (tipPercentTxt.length() > 0) {
+        if (tipType == Welcome.TIP_TYPE_PERCENTAGE) {
             tipPercent = Double.parseDouble(String.valueOf(tipPercentTxt));
             totalTip = initialBill*(tipPercent)/100;
         } else if (Double.parseDouble(String.valueOf(ratingTxt)) > 0.1){

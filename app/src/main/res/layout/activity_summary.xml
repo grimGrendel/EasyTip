@@ -1,155 +1,180 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:paddingRight="20dp"
-    android:paddingLeft="20dp"
-    android:paddingTop="20dp"
-    android:paddingBottom="20dp"
     android:orientation="vertical"
-    tools:context="easytip.easytip.SummaryActivity"
+    android:background="#A6393C"
+    tools:context=".SummaryActivity"
     android:weightSum="1">
 
-    <LinearLayout
+    <android.support.v7.widget.Toolbar
+        android:id="@+id/toolbar"
+        android:minHeight="?attr/actionBarSize"
+        android:background="#3C454A"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical"
-        android:background="@drawable/summary_bg"
-        android:paddingLeft="20dip"
-        android:paddingRight="20dip"
-        android:id="@+id/summaryBillBackground">
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/easy_tip__toolbar_title"
+            android:layout_gravity="center"
+            android:id="@+id/toolbar_title"
+            style="@style/header_1"/>
+    </android.support.v7.widget.Toolbar>
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
 
         <LinearLayout
-            android:orientation="vertical"
             android:layout_width="match_parent"
-            android:layout_height="100dp"
-            android:layout_gravity="center_horizontal"
-            android:id="@+id/summaryTitleLayout">
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:paddingLeft="20dip"
+            android:paddingRight="20dip"
+            android:id="@+id/summaryBillBackground">
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textAppearance="?android:attr/textAppearanceLarge"
-                android:paddingTop="50dp"
-                android:text="@string/summary_title"
-                android:textStyle="bold"
-                android:id="@+id/summary_title"
-                android:layout_gravity="center_horizontal" />
-        </LinearLayout>
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textAppearance="?android:attr/textAppearanceMedium"
-            android:text="@string/summary_one_bill_group_title"
-            android:textSize="22dp"
-            android:textStyle="bold"
-            android:id="@+id/summaryOneBillGroupTitle" />
-
-        <TableLayout xmlns:android="http://schemas.android.com/apk/res/android"
-            android:id="@+id/tableLayout1"
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:background="@drawable/dotted_border">>
-
-            <TableRow
-                android:id="@+id/tableRow3"
-                android:layout_width="fill_parent"
-                android:layout_height="wrap_content"
-                android:padding="5dip" >
+            <LinearLayout
+                android:orientation="vertical"
+                android:layout_width="match_parent"
+                android:layout_height="80dp"
+                android:layout_gravity="center_horizontal"
+                android:id="@+id/summaryTitleLayout">
 
                 <TextView
-                    android:layout_weight="1"
-                    android:layout_height="wrap_content"
-                    android:textAppearance="?android:attr/textAppearanceMedium"
-                    android:text="@string/summary_total_amount"
-                    android:id="@+id/summaryTotalAmount" />
-
-                <TextView
-                    android:id="@+id/summaryTotalAmountField"
-                    android:text="00.00"
-                    android:layout_gravity="right"/>
-
-                <TextView
-                    android:paddingLeft="5dp"
-                    android:id="@+id/summary_currency"
-                    android:text="$"/>
-            </TableRow>
-            <TableRow
-                android:id="@+id/tableRow3"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:padding="5dip" >
-
-                <TextView
-                    android:layout_weight="1"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:textAppearance="?android:attr/textAppearanceMedium"
-                    android:text="@string/summary_total_tip"
-                    android:id="@+id/summaryTotalTip" />
+                    android:textAppearance="?android:attr/textAppearanceLarge"
+                    android:paddingTop="30dp"
+                    android:text="@string/summary_title"
+                    android:id="@+id/summary_title"
+                    android:layout_gravity="center_horizontal"
+                    style = "@style/header_6" />
+            </LinearLayout>
 
-                <TextView
-                    android:id="@+id/summaryTotalTipField"
-                    android:text="00.00"
-                    android:layout_gravity="right" />
-
-                <TextView
-                    android:paddingLeft="5dp"
-                    android:id="@+id/summary_currency"
-                    android:text="$"/>
-            </TableRow>
-
-            <View
-                android:layout_width="fill_parent"
-                android:layout_height="1dp"
-                android:background="@android:color/black"/>
-
-            <TableRow
-                android:id="@+id/tableRow3"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:padding="5dip" >
-
-                <TextView
-                    android:layout_weight="1"
-                    android:layout_width="127dp"
-                    android:layout_height="wrap_content"
-                    android:textAppearance="?android:attr/textAppearanceMedium"
-                    android:text="@string/summary_grand_total"
-                    android:textSize="22dp"
-                    android:textStyle="bold"
-                    android:id="@+id/summaryGrandTotal" />
-
-                <TextView
-                    android:id="@+id/summaryGrandTotalField"
-                    android:textSize="22dp"
-                    android:textStyle="bold"
-                    android:text="00.00"
-                    android:layout_gravity="right" />
-
-                <TextView
-                    android:textSize="22dp"
-                    android:paddingLeft="5dp"
-                    android:id="@+id/summary_currency"
-                    android:text="$"/>
-            </TableRow>
-        </TableLayout>
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textAppearance="?android:attr/textAppearanceMedium"
-            android:text="@string/summary_split_the_bill_group_title"
-            android:textSize="22dp"
-            android:textStyle="bold"
-            android:paddingTop="30dp"
-            android:id="@+id/summaryGrandTotal" />
-
-        <TableLayout xmlns:android="http://schemas.android.com/apk/res/android"
+            <TableLayout xmlns:android="http://schemas.android.com/apk/res/android"
                 android:id="@+id/tableLayout1"
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
-                android:background="@drawable/dotted_border">>
+                android:background="@drawable/pale_border">
+
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/summary_one_bill_group_title"
+                    android:id="@+id/summaryOneBillGroupTitle"
+                    android:paddingBottom="20dp"
+                    style = "@style/header_4" />
+
+                <TableRow
+                    android:id="@+id/tableRow3"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:padding="5dip" >
+
+                    <TextView
+                        android:layout_weight="1"
+                        android:layout_height="wrap_content"
+                        android:textAppearance="?android:attr/textAppearanceMedium"
+                        android:text="@string/summary_total_amount"
+                        android:id="@+id/summaryTotalAmount"
+                        style = "@style/DefaultTextBodyPale"/>
+
+                    <TextView
+                        android:id="@+id/summaryTotalAmountField"
+                        android:text="00.00"
+                        android:layout_gravity="right"
+                        style="@style/DefaultTextBodyPale"/>
+
+                    <TextView
+                        android:paddingLeft="5dp"
+                        android:text="$"
+                        android:id="@+id/currency_symbol_1"
+                        style="@style/DefaultTextBodyPale"/>
+                </TableRow>
+                <TableRow
+                    android:id="@+id/tableRow3"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:padding="5dip" >
+
+                    <TextView
+                        android:layout_weight="1"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textAppearance="?android:attr/textAppearanceMedium"
+                        android:text="@string/summary_total_tip"
+                        android:id="@+id/summaryTotalTip"
+                        style = "@style/DefaultTextBodyPale"/>
+
+                    <TextView
+                        android:id="@+id/summaryTotalTipField"
+                        android:text="00.00"
+                        android:layout_gravity="right"
+                        style="@style/DefaultTextBodyPale"/>
+
+                    <TextView
+                        android:paddingLeft="5dp"
+                        android:text="$"
+                        android:id="@+id/currency_symbol_2"
+                        style="@style/DefaultTextBodyPale"/>
+                </TableRow>
+
+                <View
+                    android:layout_width="fill_parent"
+                    android:layout_height="4dp"
+                    android:background="#FEEAB8"/>
+
+                <TableRow
+                    android:id="@+id/tableRow3"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:padding="5dip" >
+
+                    <TextView
+                        android:layout_weight="1"
+                        android:layout_width="127dp"
+                        android:layout_height="wrap_content"
+                        android:textAppearance="?android:attr/textAppearanceMedium"
+                        android:text="@string/summary_grand_total"
+                        android:id="@+id/summaryGrandTotal"
+                        style="@style/header_4"/>
+
+                    <TextView
+                        android:id="@+id/summaryGrandTotalField"
+                        android:text="00.00"
+                        android:layout_gravity="right"
+                        style="@style/header_4"/>
+
+                    <TextView
+                        android:textSize="22dp"
+                        android:paddingLeft="5dp"
+                        android:id="@+id/currency_symbol_3"
+                        android:text="$"
+                        style="@style/header_4"/>
+                </TableRow>
+            </TableLayout>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingTop="30dp">
+            </LinearLayout>
+            <TableLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                android:id="@+id/tableLayout1"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/pale_border">>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textAppearance="?android:attr/textAppearanceMedium"
+                    android:text="@string/summary_split_the_bill_group_title"
+                    android:paddingBottom="20dp"
+                    android:id="@+id/summaryGrandTotal"
+                    style = "@style/header_4"/>
 
                 <TableRow
                     android:id="@+id/tableRow3"
@@ -163,17 +188,20 @@
                         android:layout_height="wrap_content"
                         android:textAppearance="?android:attr/textAppearanceMedium"
                         android:text="@string/summary_amount_per_person"
-                        android:id="@+id/summaryTipPerPerson" />
+                        android:id="@+id/summaryTipPerPerson"
+                        style="@style/DefaultTextBodyPale"/>
 
                     <TextView
                         android:id="@+id/summaryAmountPerPersonField"
                         android:text="00.00"
-                        android:layout_gravity="right" />
+                        android:layout_gravity="right"
+                        style="@style/DefaultTextBodyPale"/>
 
                     <TextView
                         android:paddingLeft="5dp"
-                        android:id="@+id/summary_currency"
-                        android:text="$"/>
+                        android:id="@+id/currency_symbol_4"
+                        android:text="$"
+                        style="@style/DefaultTextBodyPale"/>
                 </TableRow>
                 <TableRow
                     android:id="@+id/tableRow3"
@@ -187,22 +215,25 @@
                         android:layout_height="wrap_content"
                         android:textAppearance="?android:attr/textAppearanceMedium"
                         android:text="@string/summary_tip_per_person"
-                        android:id="@+id/summaryTipPerPerson" />
+                        android:id="@+id/summaryTipPerPerson"
+                        style="@style/DefaultTextBodyPale"/>
 
                     <TextView
                         android:id="@+id/summaryTipPerPersonField"
                         android:text="00.00"
-                        android:layout_gravity="right"/>
+                        android:layout_gravity="right"
+                        style="@style/DefaultTextBodyPale"/>
 
                     <TextView
                         android:paddingLeft="5dp"
-                        android:id="@+id/summary_currency"
-                        android:text="$"/>
+                        android:text="$"
+                        android:id="@+id/currency_symbol_5"
+                        style="@style/DefaultTextBodyPale"/>
                 </TableRow>
                 <View
                     android:layout_width="fill_parent"
-                    android:layout_height="1dp"
-                    android:background="@android:color/black"/>
+                    android:layout_height="4dp"
+                    android:background="#FEEAB8"/>
 
                 <TableRow
                     android:id="@+id/tableRow3"
@@ -216,23 +247,30 @@
                         android:layout_height="wrap_content"
                         android:textAppearance="?android:attr/textAppearanceMedium"
                         android:text="@string/summary_grand_total_per_person"
-                        android:textSize="22dp"
-                        android:textStyle="bold"
-                        android:id="@+id/summaryGrandTotalPerPerson" />
+                        android:id="@+id/summaryGrandTotalPerPerson"
+                        style="@style/header_4"/>
 
                     <TextView
                         android:textSize="22dp"
                         android:id="@+id/summaryGrandTotalPerPersonField"
                         android:text="00.00"
-                        android:layout_gravity="right" />
+                        android:layout_gravity="right"
+                        style="@style/header_4"/>
 
                     <TextView
                         android:textSize="22dp"
                         android:paddingLeft="5dp"
-                        android:id="@+id/summary_currency"
-                        android:text="$"/>
+                        android:text="$"
+                        android:id="@+id/currency_symbol_6"
+                        style="@style/header_4"/>
                 </TableRow>
             </TableLayout>
 
-    </LinearLayout>
+        </LinearLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="5dp"
+            android:background="@drawable/toolbar_dropshadow" />
+    </FrameLayout>
 </LinearLayout>

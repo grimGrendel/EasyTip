@@ -4,12 +4,25 @@
     <string name="action_settings">Settings</string>
     <string name="action_exit">Exit</string>
 
-    <string name="welcome_easy_tip_title">Easy Tip</string>
+    <string name="easy_tip__toolbar_title">EasyTip</string>
+
+    <string name="dollar_currency_symbol">$</string>
+    <string name="euro_currency_symbol">€</string>
+    <string name="pound_currency_symbol">£</string>
+
+    <string name="dollar_currency">DOLLAR ($)</string>
+    <string name="euro_currency">EURO (€)</string>
+    <string name="pound_currency">POUND (£)</string>
+
     <string name="welcome_bill_amount_field">Bill amount</string>
-    <string name="welcome_dollar_sign">$</string>
     <string name="welcome_percentage_sign">%</string>
-    <string name="welcome_capital_or">OR</string>
-    <string name="welcome_ervice_quality_field">Service Quality</string>
+    <string name="welcome_capital_or">or</string>
+    <string name="welcome_tip_percentage_field">By Percentage</string>
+    <string name="welcome_service_quality_field">By Service Quality</string>
+    <string name="welcome_tip_percentage_field_chosen">By Percentage (chosen)</string>
+    <string name="welcome_service_quality_field_chosen">By Service Quality (chosen)</string>
+    <string name="welcome_calculate_bill_button">Calculate Bill</string>
+    <string name="welcome_persons_sharing_bill"># of persons sharing the bill</string>
 
     <string name="title_activity_summary">Summary</string>
     <string name="summary_title">Bill Summary</string>
@@ -18,13 +31,13 @@
     <string name="summary_grand_total">Grand Total</string>
     <string name="summary_tip_per_person">Tip Per Person</string>
     <string name="summary_grand_total_per_person">Grand Total Per Person</string>
-    <string name="welcome_submit_button">Submit</string>
-    <string name="welcome_persons_sharing_bill"># of persons sharing the bill</string>
     <string name="summary_split_the_bill_group_title">Split the Bill</string>
     <string name="summary_one_bill_group_title">One Bill</string>
     <string name="summary_amount_per_person">Amount Per Person</string>
+
     <string name="preferences_setting_title">Settings</string>
-    <string name="preferences_default_percent_tip">Default percent tip</string>
+    <string name="preferences_default_percent_tip">Default Tip Percentage</string>
+    <string name="preferences_currency_symbol">Currency Symbol</string>
     <string name="title_activity_preferences">PreferenceActivity</string>
     <string name="preferences_done_button">Done</string>
 </resources>
