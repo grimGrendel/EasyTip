@@ -97,7 +97,7 @@ public class SummaryActivity extends ActionBarActivity {
 
         double totalTip = 0.00;
         // if tip by value has been inputted
-        if (tipType == Welcome.TIP_TYPE_PERCENTAGE) {
+        if (tipType.equals(Welcome.TIP_TYPE_PERCENTAGE)) {
             tipPercent = Double.parseDouble(String.valueOf(tipPercentTxt));
             totalTip = initialBill*(tipPercent)/100;
         } else if (Double.parseDouble(String.valueOf(ratingTxt)) > 0.1){

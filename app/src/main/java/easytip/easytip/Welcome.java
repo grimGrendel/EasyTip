@@ -221,7 +221,7 @@ public class Welcome extends ActionBarActivity {
     }
 
     public void minusPercentageButtonClicked(View view){
-        tipPercent = (EditText) findViewById(R.id.welcome_tip_amount_input_field);
+        //tipPercent = (EditText) findViewById(R.id.welcome_tip_amount_input_field);
         int initialNumPersons = Integer.parseInt(tipPercent.getText().toString());
         if(initialNumPersons > 1)
             initialNumPersons--;
@@ -229,14 +229,14 @@ public class Welcome extends ActionBarActivity {
     }
 
     public void plusPercentageButtonClicked(View view){
-        tipPercent = (EditText) findViewById(R.id.welcome_tip_amount_input_field);
+       // tipPercent = (EditText) findViewById(R.id.welcome_tip_amount_input_field);
         int initialTipPercent = Integer.parseInt(tipPercent.getText().toString());
         initialTipPercent++;
         tipPercent.setText(Integer.toString(initialTipPercent));
     }
 
     public void minusNumPersonButtonClicked(View view){
-        numPersons = (EditText) findViewById(R.id.welcome_number_persons);
+       // numPersons = (EditText) findViewById(R.id.welcome_number_persons);
         int initialNumPersons = Integer.parseInt(numPersons.getText().toString());
         if(initialNumPersons > 1)
             initialNumPersons--;
@@ -244,7 +244,7 @@ public class Welcome extends ActionBarActivity {
     }
 
     public void plusNumPersonButtonClicked(View view){
-        numPersons = (EditText) findViewById(R.id.welcome_number_persons);
+       // numPersons = (EditText) findViewById(R.id.welcome_number_persons);
         int initialNumPersons = Integer.parseInt(numPersons.getText().toString());
         initialNumPersons++;
         numPersons.setText(Integer.toString(initialNumPersons));
